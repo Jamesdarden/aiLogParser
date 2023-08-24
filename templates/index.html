@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LogParser_AI</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Log file analysis</h1>
+    <div class="container">
+      <input type="file" id="logFileInput" />
+      <button id="parseButton">Parse</button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      document.getElementById("parseButton").onclick = async function () {
+        var file = document.getElementById("logFileInput").files[0];
+        if (file) {
+          const formData = new FormData();
+          formData.append("logFile", file);
+
+          const response = await fetch("/analyze", {
+            method: "POST",
+            body: formData,
+          });
+
+          const result = await response.text();
+          document.getElementById("result").textContent = result;
+        }
+      };
+    </script>
+  </body>
+</html>
