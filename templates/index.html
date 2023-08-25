@@ -19,18 +19,21 @@
 
     <script>
       document.getElementById("parseButton").onclick = async function () {
-        var file = document.getElementById("logFileInput").files[0];
-        if (file) {
-          const formData = new FormData();
-          formData.append("logFile", file);
+        // var file = document.getElementById("logFileInput").files[0];
+        // if (file) {
+          // const formData = new FormData();
+          // formData.append("logFile", file);
 
-          const response = await fetch("/analyze", {
-            method: "POST",
-            body: formData,
-          });
+          // const response = await fetch("/analyze", {
+          //   method: "POST",
+          //   body: formData,
+          // });
 
-          const result = await response.text();
-          document.getElementById("result").textContent = result;
+          const JSONRepsonse =
+            '1. Active X Component not updating properly - Reason: Active X is not up-to-date due to a software identification mismatch, suggested Solution: Update the Active X component to the most current version, NumOfOccurrences: 4, WhereInlog: "2023-05-20 21:18:39: INFO Failed to register ActiveX Component: Frame 0- XIDRE001-00080145-000BD002" 2. WMI Diagnostic utility error - Reason: WMI diagnostic utility is not working due to missing input files, suggested Solution: Repair/Restore missing input files, NumOfOccurrences: 2, WhereInLog: "2023-05-20 21:22:03: ERROR WMI diagnostic utility completed due to missing input files." 3. JavaScript not executing - Reason: JavaScript is not allowed on the page, suggested Solution: Perform a security check on the page to make sure JavaScript is enabled, NumOfOccurrences: 1, WhereInLog: "2023-05-20 21:50:45: WARN JavaScript not executed." 4. User Internet Connectivity issue - Reason: Internet connection might be too slow or disconnected, suggested Solution: Connect to a faster internet or restart the router, NumOfOccurrences: 3, WhereInLog: "2023-05-20 21:25:02: WARN User Internet Connectivity Issue." 5. AV3Controller error - Reason: AV3Controller might be missing a vital component, suggested Solution: Reinstall AV3Controller, NumOfOccurrences: 4, WhereInLog: "2023-05-20 21:27:09: ERROR AV3Controller error." JSON Output: { "Component": "Active X", "Reason": "Active X is not up-to-date due to a software identification mismatch", "ProposedSolution": "Update the Active X component to the most current version", "NumOfOccurences": 4, "WhereInlog": "2023-05-20 21:18:39: INFO Failed to register ActiveX Component: Frame 0- XIDRE001-00080145-000BD002" }, { "Component": "WMI", "Reason": "WMI diagnostic utility is not working due to missing input files", "ProposedSolution": "Repair/Restore missing input files", "NumOfOccurences": 2, "WhereInlog": "2023-05-20 21:22:03: ERROR WMI diagnostic utility completed due to missing input files." }, { "Component": "JavaScript", "Reason": "JavaScript is not allowed on the page", "ProposedSolution": "Perform a security check on the page to make sure JavaScript is enabled", "NumOfOccurences": 1, "WhereInlog": "2023-05-20 21:50:45: WARN JavaScript not executed." }, { "Component": "User Internet Connectivity", "Reason": "Internet connection might be too slow or disconnected", "ProposedSolution": "Connect to a faster internet or restart the router", "NumOfOccurences": 3, "WhereInlog": "2023-05-20 21:25:02: WARN User Internet Connectivity Issue." }, { "Component": "AV3Controller", "Reason": "AV3Controller might be missing a vital component", "ProposedSolution": "Reinstall AV3Controller", "NumOfOccurences": 4, "WhereInlog": "2023-05-20 21:27:09: ERROR AV3Controller error." }';
+
+          // const result = await response.text();
+          document.getElementById("result").textContent = JSONRepsonse;
         }
       };
     </script>
